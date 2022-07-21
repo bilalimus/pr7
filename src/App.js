@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Courses from './components/Courses';
+import SelectedCourses from './components/SelectedCourses';
+
+const data = [
+  {
+    id: 'el1',
+    title: 'NextJS',
+    checked: false,
+  },
+  {
+    id: 'el2',
+    title: 'ReactJs',
+    checked: false,
+  },
+  {
+    id: 'el3',
+    title: 'JS',
+    checked: false,
+  },
+ ]
+ 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container-courses'>
+        {data.map((element) => {
+        return (
+        <Courses
+          key={element.id}
+          title={element.title}
+          checked={element.checked}
+          />)
+        })}
+      </div>
+      <div className='container-selected'>
+        <SelectedCourses />
+      </div>
     </div>
   );
 }
