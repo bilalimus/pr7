@@ -34,8 +34,17 @@ function App() {
     if(newData.checked === false){
     data[index].checked = true
     const newArr = data.map((el) => el)
+    console.log(newArr);
     setData(newArr)
     setSData([...sData, newData])
+    }else{
+      data[index].checked = false
+      const newArr = data.map((el) => el)
+      console.log(newArr);
+      const newRemArr = sData.slice(index)
+      console.log(newRemArr, index, 'slice');
+      setSData(newRemArr)
+      setData(newArr)
     }
   }
   return (
