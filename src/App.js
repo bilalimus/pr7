@@ -26,27 +26,19 @@ function App() {
       checked: false,
     },
    ])
-  const [sData, setSData] = useState([])
+  const [sData, setSData] = useState(data)
   
   
   
-  const newSDataHandler = (newData, index) => {
-    if(newData.checked === false){
-    data[index].checked = true
-    const newArr = data.map((el) => el)
-    console.log(newArr);
-    setData(newArr)
-    setSData([...sData, newData])
-    }else{
-      data[index].checked = false
-      const newArr = data.map((el) => el)
-      console.log(newArr);
-      const newRemArr = sData.slice(index)
-      console.log(newRemArr, index, 'slice');
-      setSData(newRemArr)
-      setData(newArr)
+  const newSDataHandler = (id) => {
+    setData((preventValue) => {
+      return preventValue.map((el) => {
+        if(el.id === id){
+          return {...el, checked: true}
+        }return el
+      })
+    }) 
     }
-  }
   return (
     <div className="App">
       <div className='container-courses'>
@@ -63,13 +55,14 @@ function App() {
         })}
       </div>
       <div className='container-selected'>
-        {sData.map((el) => {
+        {data.map((el) => {
+          if(el.checked){
           return (<SelectedCourses 
           key={el.id}
           id={el.id}
           title={el.title}
           checked={el.checked}
-          />)
+          />)}
         })}
       </div>
     </div>
