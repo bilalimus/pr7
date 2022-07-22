@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Courses.css";
 
 function Courses(props) {
@@ -9,7 +8,7 @@ function Courses(props) {
       title: props.title,
       checked: props.checked,
     };
-    props.newSDataHandler(newData);
+    props.newSDataHandler(newData,props.index);
   };
   return (
     <div onClick={clickHandler} className="courses">

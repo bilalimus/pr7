@@ -6,6 +6,9 @@
 .container-selected{
   width: 400px;
   border: 1px solid gold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .container-courses{
   width: 400px;

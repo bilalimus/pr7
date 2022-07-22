@@ -5,38 +5,46 @@ import { useState } from 'react';
 import SelectedCourses from './components/SelectedCourses';
 
 
-const data = [
-  {
-    id: 'el1',
-    title: 'NextJS',
-    checked: false,
-  },
-  {
-    id: 'el2',
-    title: 'ReactJs',
-    checked: false,
-  },
-  {
-    id: 'el3',
-    title: 'JS',
-    checked: false,
-  },
- ]
+
  
 
 function App() {
+  const [data, setData] = useState([
+    {
+      id: 'el1',
+      title: 'NextJS',
+      checked: false,
+    },
+    {
+      id: 'el2',
+      title: 'ReactJs',
+      checked: false,
+    },
+    {
+      id: 'el3',
+      title: 'JS',
+      checked: false,
+    },
+   ])
   const [sData, setSData] = useState([])
   
-  const newSDataHandler = (newData) => {
-    // console.log(newData);
+  
+  
+  const newSDataHandler = (newData, index) => {
+    if(newData.checked === false){
+    data[index].checked = true
+    const newArr = data.map((el) => el)
+    setData(newArr)
     setSData([...sData, newData])
+    }
   }
   return (
     <div className="App">
       <div className='container-courses'>
-        {data.map((element) => {
+        {data.map((element, index) => {
         return (
         <Courses
+          index={index}
           newSDataHandler={newSDataHandler}
           key={element.id}
           id={element.id}
