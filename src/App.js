@@ -26,7 +26,6 @@ function App() {
       checked: false,
     },
    ])
-  const [sData, setSData] = useState(data)
   
   
   
@@ -34,7 +33,7 @@ function App() {
     setData((preventValue) => {
       return preventValue.map((el) => {
         if(el.id === id){
-          return {...el, checked: true}
+          return {...el, checked: !el.checked }
         }return el
       })
     }) 
@@ -63,6 +62,7 @@ function App() {
           title={el.title}
           checked={el.checked}
           />)}
+
         })}
       </div>
     </div>
